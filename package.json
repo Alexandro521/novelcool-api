@@ -1,0 +1,31 @@
+{
+  "name": "novelcool-api",
+  "version": "1.0.0",
+  "description": "api de mangas con web scraping ",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexandro521/novelcool-api.git"
+  },
+  "keywords": [
+    "manga-api",
+    "novelcool-api",
+    "manga-read-api"
+  ],
+  "author": "Alexandro mendez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexandro521/novelcool-api/issues"
+  },
+  "homepage": "https://github.com/Alexandro521/novelcool-api#readme",
+  "dependencies": {
+    "axios": "1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "4.19.2",
+    "nodemon": "3.1.0"
+  }
+}
