@@ -13,7 +13,7 @@ async function AxiosGet(url){
 }
 
 function getMangas($,Element,parent=""){
-    const mangaList = []
+    const mangaList =[]
     $(Element).find(parent+'> .book-item').each((mangaIndex,mangaElement)=>{
         const genresList = [];
         let regex = /\/([^\/]+)\.html$/;
