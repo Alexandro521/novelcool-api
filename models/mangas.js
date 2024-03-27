@@ -105,28 +105,28 @@ async function get_category(categoryUrl){
         return sectionList
     }
     static async get_lastet(){
-        return await get_category('https://es.novelcool.com/category/latest.html')
+        return await get_category(mainUrl +'category/latest.html')
     }
     static async get_popular(){
-        return await get_category('https://es.novelcool.com/category/popular.html')
+        return await get_category(mainUrl +'category/popular.html')
     }
     static async get_completed(){
-        return await get_category('https://es.novelcool.com/category/completed.html')
+        return await get_category(mainUrl +'category/completed.html')
     }
     static async get_Romance(){
-        return await get_category('https://es.novelcool.com/category/Romance.html')
+        return await get_category(mainUrl +'category/Romance.html')
     }
     static async get_Comedy(){
-        return await get_category('https://es.novelcool.com/category/Comedia.html')
+        return await get_category(mainUrl +'category/Comedia.html')
     }
     static async get_Drama(){
-        return await get_category('https://es.novelcool.com/category/Drama.html')
+        return await get_category(mainUrl +'category/Drama.html')
     }
     static async get_Accion(){
-        return await get_category('https://es.novelcool.com/category/Acción.html')
+        return await get_category(mainUrl +'category/Acción.html')
     }
     static async get_Webcomic(){
-        return await get_category('https://es.novelcool.com/category/Webcomic.html')
+        return await get_category(mainUrl +'category/Webcomic.html')
     }
 
 
