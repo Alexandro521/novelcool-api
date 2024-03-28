@@ -7,7 +7,7 @@ const axiosHead = {
       }
     } 
 
-const mainUrl = 'https://es.novelcool.com/'
+const mainUrl = (leng='es')=> `https://${leng}.novelcool.com/`
 
 //peticiones get con axios y retorna un repuesta
 async function AxiosGet(url){
@@ -54,7 +54,9 @@ async function AxiosGet(url){
 //funcion para obtener mangas de una categoria en especifico
 async function get_category(categoryUrl){
 
-    const response = await AxiosGet(categoryUrl);
+    const URL = mainUrl()+'category/'+categoryUrl+'.html';
+
+    const response = await AxiosGet(URL);
 
     const $ = cheerio.load(response.data);
 
@@ -68,17 +70,31 @@ async function get_category(categoryUrl){
         mangaList.push(result)
     })
 
+    const page = pagination($)
+
     return {
         section: categoryTitle,
-        result: mangaList
+        result: mangaList,
+        pagination: page
     }
 }
 
+function pagination($){
+
+    const currentPage = $(".page-navone").find('.vertical-top a .select').text();
+    const lastPage = $(".page-navone .visible-inlineblock-pm .para-h8").text();
+    return {
+        currentPage: currentPage,
+        lastPage:lastPage
+    }
+}
 
  export class Mangas{
 
+
     static async get_mangasIndex(){
-        const response = await AxiosGet(mainUrl);
+
+        const response = await AxiosGet(mainUrl());
         const $ = cheerio.load(response.data);
         const sectionList = []
         //obtener todas la secciones principales con sus repectivos mangas
@@ -104,35 +120,39 @@ async function get_category(categoryUrl){
         })
         return sectionList
     }
+
     static async get_lastet(){
-        return await get_category(mainUrl +'category/latest.html')
+        return await get_category(`latest`)
     }
-    static async get_popular(){
-        return await get_category(mainUrl +'category/popular.html')
+    static async get_popular(page = 1){
+        return await get_category(`popular_${page}`)
     }
-    static async get_completed(){
-        return await get_category(mainUrl +'category/completed.html')
+    static async get_completed(page = 1){
+        return await get_category(`completed_${page}`)
     }
-    static async get_Romance(){
-        return await get_category(mainUrl +'category/Romance.html')
+    static async get_Romance(page = 1){
+        return await get_category(`Romance_${page}`)
     }
-    static async get_Comedy(){
-        return await get_category(mainUrl +'category/Comedia.html')
+    static async get_Comedy(page = 1){
+        return await get_category(`Comedia_${page}`)
     }
-    static async get_Drama(){
-        return await get_category(mainUrl +'category/Drama.html')
+    static async get_Drama(page = 1){
+        return await get_category(`Drama_${page}`)
     }
-    static async get_Accion(){
-        return await get_category(mainUrl +'category/Acción.html')
+    static async get_Accion(page = 1){
+        return await get_category(`Acción_${page}`)
     }
-    static async get_Webcomic(){
-        return await get_category(mainUrl +'category/Webcomic.html')
+    static async get_Webcomic(page = 1){
+        return await get_category(`Webcomic_${page}`)
     }
+
 
 
 
  }
  
  //probar metodos
- const result = await Mangas.get_Webcomic()
+ const result = await Mangas.get_popular(89)
  console.log(result.result[0]);
+ console.log(result.pagination);
+
