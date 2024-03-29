@@ -29,7 +29,7 @@
            if(Element){
 
          categoryList.push({
-            id: id,
+            id: Number.parseInt(id),
             genre: Element
 
          })

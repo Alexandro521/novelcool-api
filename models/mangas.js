@@ -101,63 +101,63 @@ async function get_category(categoryUrl){
     static async search(
 
         searchText,
-        textSearchMethod='contain',
         Author='',
+        textSearchMethod='contain',
         autorSearchMehod='contain',
         categories_Include = '',
-        categories_not_Includes = '',
+        categories_not_Include = '',
         publishYear='',
         complete_Series='',
         rate_star= ''
         ){
+        
 
        let SearchParams = {
             textSearchMethodOptions: ['contain','begin','End'],
             autorSearchMehodOptions: ['contain','begin','End'],
-            searchText: searchText,
-            Author: Author,
-            categories_Include: categories_Include,
-            categories_not_Includes: categories_not_Includes,
-            publishYear: publishYear,
-            complete_Series: complete_Series,
-            rate_star: rate_star
+            searchText: searchText ?? 'none',
+            Author: Author ?? 'none',
+            categories_Include: categories_Include ?? 'none',
+            categories_not_Includes: categories_not_Include ?? 'none',
+            publishYear: publishYear ?? 'none',
+            complete_Series: complete_Series ??'none',
+            rate_star: rate_star ?? 'none'
         }
+        const categoriesIncludes = '%2C'+ categories_Include.join('%2C')
+        const categoriesNotIncludes = '%2C'+ categories_not_Include.join('%2C')
+        console.log(categoriesIncludes)
 
-      const searchUrl =   `https://www.novelcool.com/search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${SearchParams.categories_Include}&out_category_id=${SearchParams.categories_not_Includes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
+      const searchUrl =   `https://www.novelcool.com/search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${categoriesIncludes}&out_category_id=${categoriesNotIncludes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
 
-      console.log(searchUrl)
+     console.log(searchUrl)
       console.log("-------------------")
       const URL =searchUrl;
-
-
       const response = await AxiosGet(searchUrl);
-  
       const $ = cheerio.load(response.data);
       //const categoryTitle = $('.category-headline-bar .category-title').text()
       const mangaList = []
-  
       $('.site-content').find('.category-book-list').find('.book-item').each((mangaIndex,mangaElement)=>{
-  
           const result = getMangas($,mangaElement);
-  
           mangaList.push(result)
       })
-  
      // const page = pagination($)
-      //const categories = getCategoryList($)//nota:utilizar memorizacion para esto
-  
+      const categories = filterCategoryList($)
+      //nota:utilizar memorizacion para esto
+      
       return {
-          //categoryGroup: categories,
+        head:{
+          filter: SearchParams,
+          categoryGroup: categories,
+
+        },
+        body:{
           result: mangaList,
           //pagination: page
+        }
       }
-
     }
  }
  //probar metodos
- const result = await Mangas.search('naruto')
- //console.log(result.categoryGroup);
- //console.log(result.section);
- console.log(result.result[0]);
- //console.log(result.pagination);
-
+ const result = await Mangas.search('Dr','','contain','begin',[],[],2020,'YES',5)
+console.log(result.head.filter);
+console.log(result.body.result[0]);
