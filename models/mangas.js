@@ -127,7 +127,7 @@ async function get_category(categoryUrl){
         const categoriesNotIncludes = '%2C'+ categories_not_Include.join('%2C')
         console.log(categoriesIncludes)
 
-      const searchUrl =   `https://www.novelcool.com/search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${categoriesIncludes}&out_category_id=${categoriesNotIncludes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
+      const searchUrl =   `${mainUrl()}search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${categoriesIncludes}&out_category_id=${categoriesNotIncludes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
 
      console.log(searchUrl)
       console.log("-------------------")
@@ -158,6 +158,6 @@ async function get_category(categoryUrl){
     }
  }
  //probar metodos
- const result = await Mangas.search('Dr','','contain','begin',[],[],2020,'YES',5)
+ const result = await Mangas.search('Dragon ball','','contain','begin',[],[])
 console.log(result.head.filter);
 console.log(result.body.result[0]);
