@@ -1,56 +1,19 @@
 import cheerio from 'cheerio';
 import axios from 'axios';
+import { getCategoryList } from './modules/categoryList.js';
+import { pagination } from './modules/pagination.js';
+import { getMangas } from './modules/getMangas.js';
 
 const axiosHead = {
     headers:{
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     } 
-
 const mainUrl = (leng='es')=> `https://${leng}.novelcool.com/`
-
 //peticiones get con axios y retorna un repuesta
 async function AxiosGet(url){
     return await axios.get(url,axiosHead)
 }
-
-//funcion para obtener un objeto con la informacion del manga
- function getMangas($,mangaElement){
-
-        const genresList = [];
-        let regex = /\/([^\/]+)\.html$/;
-        //elemento padre comun de todos los elementos
-        const index = $(mangaElement).find('.book-info');
-        const id = $(mangaElement).find('.book-pic a').attr('href').match(regex) 
-        const title = index.find('.book-name').text();
-        const img = $(mangaElement).find('.book-pic a img').attr('cover_url') ?? $(mangaElement).find('.book-pic a img').attr('lazy_url');
-        const typeManga = $(mangaElement).find('.book-pic a').find('.book-type-manga').text();
-
-         $(mangaElement).find('.book-data-info .book-tags .book-tag').each((genreIndex,genreElement)=>{
-            const genre = $(genreElement).text()
-            genresList.push(genre)
-        });
-        const bookRate = index.find('.book-rate .book-rate-num').text();
-        const description = index.find('.book-intro').text().size > 1 ? 
-         index.find('.book-intro').text(): 
-         $(mangaElement).find('.book-pic a .book-summary-content').text();
-        const views = index.find('.book-data .book-data-item').find('.book-data-num').text();
-        const dataTime = index.find('.book-data').find('.book-data-time').text();
-        const mangaObject = {
-
-            id:[...id][1],
-            title: title,
-            img: img,
-            typeManga:typeManga,
-            genres: [...genresList],
-            bookRate:bookRate,
-            description:description,
-            views:views,
-            dataTime:dataTime
-        }
-        return mangaObject
-}
-
 //funcion para obtener mangas de una categoria en especifico
 async function get_category(categoryUrl){
 
@@ -71,21 +34,13 @@ async function get_category(categoryUrl){
     })
 
     const page = pagination($)
+    const categories = getCategoryList($)//nota:utilizar memorizacion para esto
 
     return {
+        categoryGroup: categories,
         section: categoryTitle,
         result: mangaList,
         pagination: page
-    }
-}
-
-function pagination($){
-
-    const currentPage = $(".page-navone").find('.vertical-top a .select').text();
-    const lastPage = $(".page-navone .visible-inlineblock-pm .para-h8").text();
-    return {
-        currentPage: currentPage,
-        lastPage:lastPage
     }
 }
 
@@ -99,15 +54,11 @@ function pagination($){
         const sectionList = []
         //obtener todas la secciones principales con sus repectivos mangas
         $('.index-book-list').each((index,Element)=>{
-        
             const nameSection = $(Element).find('.site-content a ').attr('title');
-
             const mangaList = []
 
             $(Element).find('.site-content .category-book-list .book-item').each((mangaIndex,mangaElement)=>{
-
                 const result = getMangas($,mangaElement);
-    
                 mangaList.push(result)
             })
 
@@ -120,7 +71,6 @@ function pagination($){
         })
         return sectionList
     }
-
     static async get_lastet(){
         return await get_category(`latest`)
     }
@@ -145,14 +95,14 @@ function pagination($){
     static async get_Webcomic(page = 1){
         return await get_category(`Webcomic_${page}`)
     }
-
-
-
-
+    static async get_category(Category_name='index',page = 1){
+        return await get_category(`${Category_name}_${page}`)
+    }
  }
- 
  //probar metodos
- const result = await Mangas.get_popular(89)
- console.log(result.result[0]);
+ const result = await Mangas.get_category('Comedia')
+ console.log(result.categoryGroup);
+ console.log(result.section);
+ console.log(result.result[3]);
  console.log(result.pagination);
 
