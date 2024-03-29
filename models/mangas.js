@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import axios from 'axios';
-import { getCategoryList } from './modules/categoryList.js';
+import { getCategoryList,filterCategoryList} from './modules/categoryList.js';
 import { pagination } from './modules/pagination.js';
 import { getMangas } from './modules/getMangas.js';
 
@@ -98,11 +98,66 @@ async function get_category(categoryUrl){
     static async get_category(Category_name='index',page = 1){
         return await get_category(`${Category_name}_${page}`)
     }
+    static async search(
+
+        searchText,
+        textSearchMethod='contain',
+        Author='',
+        autorSearchMehod='contain',
+        categories_Include = '',
+        categories_not_Includes = '',
+        publishYear='',
+        complete_Series='',
+        rate_star= ''
+        ){
+
+       let SearchParams = {
+            textSearchMethodOptions: ['contain','begin','End'],
+            autorSearchMehodOptions: ['contain','begin','End'],
+            searchText: searchText,
+            Author: Author,
+            categories_Include: categories_Include,
+            categories_not_Includes: categories_not_Includes,
+            publishYear: publishYear,
+            complete_Series: complete_Series,
+            rate_star: rate_star
+        }
+
+      const searchUrl =   `https://www.novelcool.com/search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${SearchParams.categories_Include}&out_category_id=${SearchParams.categories_not_Includes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
+
+      console.log(searchUrl)
+      console.log("-------------------")
+      const URL =searchUrl;
+
+
+      const response = await AxiosGet(searchUrl);
+  
+      const $ = cheerio.load(response.data);
+      //const categoryTitle = $('.category-headline-bar .category-title').text()
+      const mangaList = []
+  
+      $('.site-content').find('.category-book-list').find('.book-item').each((mangaIndex,mangaElement)=>{
+  
+          const result = getMangas($,mangaElement);
+  
+          mangaList.push(result)
+      })
+  
+     // const page = pagination($)
+      //const categories = getCategoryList($)//nota:utilizar memorizacion para esto
+  
+      return {
+          //categoryGroup: categories,
+          result: mangaList,
+          //pagination: page
+      }
+
+    }
  }
  //probar metodos
- const result = await Mangas.get_category('Comedia')
- console.log(result.categoryGroup);
- console.log(result.section);
- console.log(result.result[3]);
- console.log(result.pagination);
+ const result = await Mangas.search('naruto')
+ //console.log(result.categoryGroup);
+ //console.log(result.section);
+ console.log(result.result[0]);
+ //console.log(result.pagination);
 
