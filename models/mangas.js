@@ -148,5 +148,48 @@ async function get_category(categoryUrl){
             chaptersList: chaptersList
         }}
     }
+    static async chapter_read(){
+
+        const url = 'https://es.novelcool.com/chapter/Cap-tulo-11/5291879/-10-1.html'
+       const response = await AxiosGet(url);
+
+        const $ = cheerio.load(response.data)
+        const pages = $('.site-content .mangaread-page .mangaread-pagenav .sl-page > option').length/2
+        
+        const title = $('.mangaread-title').children().first().attr('title')+'/'+$('.mangaread-title').children().last().attr('title');
+        const prevChapter = $('.mangaread-top').find('.mangaread-prev-btn a').attr('href')
+        let nextChapter = ''
+        const imgList = []
+       $('.mangaread-img > .pic_box').each((index,Element)=>{
+            const img = $(Element).find('img').attr('src')
+           imgList.push(img)
+        })
+        for(let i = 1; i<pages;i++){
+
+            const url = `https://es.novelcool.com/chapter/Cap-tulo-11/5291879/-10-${i+1}.html`
+            
+            const response = await AxiosGet(url);
+
+            const $ = cheerio.load(response.data)
+            nextChapter =  $('.mangaread-top').find('.mangaread-next-btn a').attr('href')
+            $('.mangaread-img > .pic_box').each((index,Element)=>{
+                const img = $(Element).find('img').attr('src')
+               imgList.push(img)
+            })
+        }
+       // console.log(imgList)
+        console.log(imgList.length)
+        return {
+            captitle:title,
+            prevChapter:prevChapter,
+            nextChapter:nextChapter,
+            pages: imgList
+        }
  }
+}
  //probar metodos
+ const result = await Mangas.chapter_read()
+
+ console.log(result);
+
+
