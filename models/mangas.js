@@ -45,7 +45,57 @@ async function get_category(categoryUrl){
 }
 
  export class Mangas{
+    static async get_mangasIndex(){
 
+        const response = await AxiosGet(mainUrl());
+        const $ = cheerio.load(response.data);
+        const sectionList = []
+        //obtener todas la secciones principales con sus repectivos mangas
+        $('.index-book-list').each((index,Element)=>{
+            const nameSection = $(Element).find('.site-content a ').attr('title');
+            const mangaList = []
+
+            $(Element).find('.site-content .category-book-list .book-item').each((mangaIndex,mangaElement)=>{
+                const result = getMangas($,mangaElement);
+                mangaList.push(result)
+            })
+
+            const sectionObject = {
+                nameSection:nameSection,
+                mangaList: mangaList
+            }
+
+            sectionList.push(sectionObject)
+        })
+        return sectionList
+    }
+    static async get_lastet(){
+        return await get_category(`latest`)
+    }
+    static async get_popular(page = 1){
+        return await get_category(`popular_${page}`)
+    }
+    static async get_completed(page = 1){
+        return await get_category(`completed_${page}`)
+    }
+    static async get_Romance(page = 1){
+        return await get_category(`Romance_${page}`)
+    }
+    static async get_Comedy(page = 1){
+        return await get_category(`Comedia_${page}`)
+    }
+    static async get_Drama(page = 1){
+        return await get_category(`Drama_${page}`)
+    }
+    static async get_Accion(page = 1){
+        return await get_category(`Acción_${page}`)
+    }
+    static async get_Webcomic(page = 1){
+        return await get_category(`Webcomic_${page}`)
+    }
+    static async get_category(Category_name='index',page = 1){
+        return await get_category(`${Category_name}_${page}`)
+    }
     static async search(
 
         searchText,
@@ -104,56 +154,4 @@ async function get_category(categoryUrl){
         }
       }
     }
-    static async get_mangasIndex(){
-
-        const response = await AxiosGet(mainUrl());
-        const $ = cheerio.load(response.data);
-        const sectionList = []
-        //obtener todas la secciones principales con sus repectivos mangas
-        $('.index-book-list').each((index,Element)=>{
-            const nameSection = $(Element).find('.site-content a ').attr('title');
-            const mangaList = []
-
-            $(Element).find('.site-content .category-book-list .book-item').each((mangaIndex,mangaElement)=>{
-                const result = getMangas($,mangaElement);
-                mangaList.push(result)
-            })
-
-            const sectionObject = {
-                nameSection:nameSection,
-                mangaList: mangaList
-            }
-
-            sectionList.push(sectionObject)
-        })
-        return sectionList
-    }
-    static async get_lastet(){
-        return await get_category(`latest`)
-    }
-    static async get_popular(page = 1){
-        return await get_category(`popular_${page}`)
-    }
-    static async get_completed(page = 1){
-        return await get_category(`completed_${page}`)
-    }
-    static async get_Romance(page = 1){
-        return await get_category(`Romance_${page}`)
-    }
-    static async get_Comedy(page = 1){
-        return await get_category(`Comedia_${page}`)
-    }
-    static async get_Drama(page = 1){
-        return await get_category(`Drama_${page}`)
-    }
-    static async get_Accion(page = 1){
-        return await get_category(`Acción_${page}`)
-    }
-    static async get_Webcomic(page = 1){
-        return await get_category(`Webcomic_${page}`)
-    }
-    static async get_category(Category_name='index',page = 1){
-        return await get_category(`${Category_name}_${page}`)
-    }
-
  }
