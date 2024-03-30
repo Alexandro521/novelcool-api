@@ -99,6 +99,7 @@ async function get_category(categoryUrl){
         return await get_category(`${Category_name}_${page}`)
     }
     static async get_info(id){
+
        const url = `${mainUrl()}novel/${id}.html`;
        const response = await AxiosGet(url);
        const $ = cheerio.load(response.data);
@@ -150,7 +151,7 @@ async function get_category(categoryUrl){
     }
     static async chapter_read(url){
 
-        const URL = url+'-10-1.html'
+        const URL = mainUrl()+'chapter/'+url+'-10-1.html'
        const response = await AxiosGet(URL);
 
         const $ = cheerio.load(response.data)
@@ -166,7 +167,7 @@ async function get_category(categoryUrl){
         })
         for(let i = 1; i<pages;i++){
 
-            const URL = url+`-10-${i+1}.html`
+            const URL = mainUrl()+'chapter/'+url+`-10-${i+1}.html`
             
             const response = await AxiosGet(URL);
 
@@ -186,10 +187,16 @@ async function get_category(categoryUrl){
             pages: imgList
         }
  }
+
 }
  //probar metodos
- const result = await Mangas.chapter_read('https://es.novelcool.com/chapter/Capitulo-1106/11862062/')
+ const result = await Mangas.get_mangasIndex()
+ const result2 = await Mangas.get_info('Puedo-Tener-Epifan-as-Infinitas')
+ const result3 = await Mangas.chapter_read('Capitulo-34/10337801')
 
- console.log(result);
+ console.log(result[0]);
+ console.log(result2.mangaInfo.chaptersList)
+ console.log(result3)
+
 
 
