@@ -98,11 +98,55 @@ async function get_category(categoryUrl){
     static async get_category(Category_name='index',page = 1){
         return await get_category(`${Category_name}_${page}`)
     }
+    static async get_info(id){
+       const url = `${mainUrl()}novel/${id}.html`;
+       const response = await AxiosGet(url);
+       const $ = cheerio.load(response.data);
+       //#Elementos
+       const img = $('.bookinfo-pic-img ').attr('src');
+       const title = $('.bk-side-intro .bk-side-intro-most .bookinfo-title').text();
+       const bookType = $('.site-content .bookinfo-module .bk-intro .bookinfo-pic .book-type').text();
+       const author = $('.bk-side-intro .bk-side-intro-most .bookinfo-author a span').text()
+       const followers = $('.for-pc .bk-data').children().first().find('.bk-data-val').text()
+       const rate = $({...$('.for-pc .bk-data').children()}[1]).find('.bk-data-val').text();
+       const views = $('.for-pc .bk-data').children().last().find('.bk-data-val').text()
+       const description = $('.bk-summary .bk-summary-txt').text();
+       const genres = []
+       $('.for-pc .bk-cates .bookinfo-category-list > .bk-cate-item ').each((ind,Element)=>{
+           const genre =  $(Element).find('a span').text()
+           if(genre) genres.push(genre) 
+       })
+       const chapters = $(' .chapter-item-list  .chp-inner-ls > .chp-item');
+       const chaptersList = []
+
+       for(let i = 0; i <  chapters.length;i++){
+            const Element = chapters[i]
+            const chapterId = {...$(Element).find('a').attr('href').match(/chapter\/(.+)$/
+            )}[1]
+            const chapterTitle = $(Element).find('.chapter-item-title .chapter-item-headtitle').text();
+            const chapterViews = $(Element).find('.chapter-item-views span').text();
+            const chapterDate = $(Element).find('.chapter-item-time').text();
+            chaptersList.push({
+                chapterId:chapterId,
+                chapterTitle:chapterTitle,
+                chapterViews:chapterViews,
+                chapterDate:chapterDate
+            })
+       }    
+
+       return {
+        mangaInfo:{
+            img: img,
+            title:title,
+            bookType:bookType,
+            author:author,
+            followers:followers,
+            rate:rate,
+            views:views,
+            description:description,
+            genres:genres,
+            chaptersList: chaptersList
+        }}
+    }
  }
  //probar metodos
- const result = await Mangas.get_category('Comedia')
- console.log(result.categoryGroup);
- console.log(result.section);
- console.log(result.result[3]);
- console.log(result.pagination);
-
