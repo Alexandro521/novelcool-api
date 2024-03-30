@@ -151,26 +151,22 @@ async function get_category(categoryUrl){
     }
     static async chapter_read(url){
 
-        const URL = mainUrl()+'chapter/'+url+'-10-1.html'
+       const URL = mainUrl()+'chapter/'+url+'-10-1.html';
        const response = await AxiosGet(URL);
-
-        const $ = cheerio.load(response.data)
+        const $ = cheerio.load(response.data);
         const pages = $('.site-content .mangaread-page .mangaread-pagenav .sl-page > option').length/2
-        
         const title = $('.mangaread-title').children().first().attr('title')+'/'+$('.mangaread-title').children().last().attr('title');
         const prevChapter = $('.mangaread-top').find('.mangaread-prev-btn a').attr('href')
         let nextChapter = ''
         const imgList = []
+
        $('.mangaread-img > .pic_box').each((index,Element)=>{
             const img = $(Element).find('img').attr('src')
            imgList.push(img)
         })
         for(let i = 1; i<pages;i++){
-
             const URL = mainUrl()+'chapter/'+url+`-10-${i+1}.html`
-            
             const response = await AxiosGet(URL);
-
             const $ = cheerio.load(response.data)
             nextChapter =  $('.mangaread-top').find('.mangaread-next-btn a').attr('href')
             $('.mangaread-img > .pic_box').each((index,Element)=>{
@@ -189,14 +185,5 @@ async function get_category(categoryUrl){
  }
 
 }
- //probar metodos
- const result = await Mangas.get_mangasIndex()
- const result2 = await Mangas.get_info('Puedo-Tener-Epifan-as-Infinitas')
- const result3 = await Mangas.chapter_read('Capitulo-34/10337801')
-
- console.log(result[0]);
- console.log(result2.mangaInfo.chaptersList)
- console.log(result3)
-
 
 
