@@ -148,10 +148,10 @@ async function get_category(categoryUrl){
             chaptersList: chaptersList
         }}
     }
-    static async chapter_read(){
+    static async chapter_read(url){
 
-        const url = 'https://es.novelcool.com/chapter/Cap-tulo-11/5291879/-10-1.html'
-       const response = await AxiosGet(url);
+        const URL = url+'-10-1.html'
+       const response = await AxiosGet(URL);
 
         const $ = cheerio.load(response.data)
         const pages = $('.site-content .mangaread-page .mangaread-pagenav .sl-page > option').length/2
@@ -166,9 +166,9 @@ async function get_category(categoryUrl){
         })
         for(let i = 1; i<pages;i++){
 
-            const url = `https://es.novelcool.com/chapter/Cap-tulo-11/5291879/-10-${i+1}.html`
+            const URL = url+`-10-${i+1}.html`
             
-            const response = await AxiosGet(url);
+            const response = await AxiosGet(URL);
 
             const $ = cheerio.load(response.data)
             nextChapter =  $('.mangaread-top').find('.mangaread-next-btn a').attr('href')
@@ -188,7 +188,7 @@ async function get_category(categoryUrl){
  }
 }
  //probar metodos
- const result = await Mangas.chapter_read()
+ const result = await Mangas.chapter_read('https://es.novelcool.com/chapter/Capitulo-1106/11862062/')
 
  console.log(result);
 
