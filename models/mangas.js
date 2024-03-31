@@ -34,10 +34,9 @@ async function get_category(categoryUrl){
     })
 
     const page = pagination($)
-    const categories = getCategoryList($)//nota:utilizar memorizacion para esto
+    //nota:utilizar memorizacion para esto
 
     return {
-        categoryGroup: categories,
         section: categoryTitle,
         result: mangaList,
         pagination: page
@@ -71,7 +70,7 @@ async function get_category(categoryUrl){
         })
         return sectionList
     }
-    static async get_lastet(){
+    static async get_lasted(){
         return await get_category(`latest`)
     }
     static async get_popular(page = 1){
@@ -79,21 +78,6 @@ async function get_category(categoryUrl){
     }
     static async get_completed(page = 1){
         return await get_category(`completed_${page}`)
-    }
-    static async get_Romance(page = 1){
-        return await get_category(`Romance_${page}`)
-    }
-    static async get_Comedy(page = 1){
-        return await get_category(`Comedia_${page}`)
-    }
-    static async get_Drama(page = 1){
-        return await get_category(`Drama_${page}`)
-    }
-    static async get_Accion(page = 1){
-        return await get_category(`Acción_${page}`)
-    }
-    static async get_Webcomic(page = 1){
-        return await get_category(`Webcomic_${page}`)
     }
     static async get_category(Category_name='index',page = 1){
         return await get_category(`${Category_name}_${page}`)
@@ -240,6 +224,14 @@ async function get_category(categoryUrl){
       //pagination: page
     }
   }
+    }
+    static async get_GenresList(){
+
+        const response = await  AxiosGet(mainUrl()+'category/1947.html')
+        const $ = cheerio.load(response.data)
+        const categories = getCategoryList($)
+        return categories
+
     }
 
 }
