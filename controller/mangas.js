@@ -103,7 +103,7 @@ export class MangaController{
         res.status(200).json(result)
     }
     static async Category(req,res){
-        const category = req.query.category 
+        const category = req.params.category 
         const page = req.query.page ?? 1
         const result = await Mangas.get_category(category,page)
         res.status(200).json(result)
