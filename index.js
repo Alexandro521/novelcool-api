@@ -4,7 +4,7 @@ import cors from 'cors'
 const app = express()
 const PORT = process.env.PORT ?? 1234;
 const corsOption = {
-    origin: ['http://localhost:3000/','http://127.0.0.1:3001/'],
+    origin: ['http://localhost:3000','http://127.0.0.1:3001'],
     methods:['GET']
 }
  app.use('/api',mangasRouter)
