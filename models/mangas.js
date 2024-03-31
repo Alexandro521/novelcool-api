@@ -198,9 +198,8 @@ async function get_category(categoryUrl){
 
   const searchUrl =   `${mainUrl()}search/?name_sel=${textSearchMethod}&name=${searchText}&author_sel=${autorSearchMehod}&author=${Author}&category_id=${categoriesIncludes}&out_category_id=${categoriesNotIncludes}&publish_year=${publishYear}&completed_series=${complete_Series}&rate_star=${rate_star}`;
 
- console.log(searchUrl)
-  console.log("-------------------")
-  const URL =searchUrl;
+//  console.log(searchUrl)
+//   console.log("-------------------")
   const response = await AxiosGet(searchUrl);
   const $ = cheerio.load(response.data);
   //const categoryTitle = $('.category-headline-bar .category-title').text()
