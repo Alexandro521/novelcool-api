@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>read</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+  }
+  body{
+    min-height: 100vh;
+    background: linear-gradient(15deg,rgb(14, 57, 58),rgb(29, 9, 61));
+    color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+   
+  }
+
+  header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 ;
+    gap: 20px;
+    font-family: sans-serif;
+  }
+  header form .buscar{
+    background-color: rgba(255, 255, 255, 0.164);
+    display: flex;
+    width: 400px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #fff;
+    align-items: center;
+    border: 1px solid #2f78ff00;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.384);
+  }
+
+  header form .buscar input{
+    flex: 2;
+    height: 35px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+  }
+  header form .buscar input::placeholder{
+    color: #56a5ff96;
+  }
+  header form .buscar button{
+    width: 40px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+     cursor: pointer;
+  }
+.info span{
+    margin-top: 4px;
+}
+.section-1 {
+    margin-top: 30px;
+    width: 95%;
+    min-height: 450px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 15px;
+    border-radius: 10px;
+    border: 1px solid #2f78ff00;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.041);
+    background-color: rgba(255, 255, 255, 0.041);
+    max-width: 1300px;
+    gap: 10px;
+}
+.visual {
+    background-color: rgba(28, 113, 187, 0);
+    width: 280px;
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+.info-manga {
+    background-color: rgba(0, 89, 255, 0);
+    flex: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: start;
+    gap: 10px;
+    overflow: hidden;
+    
+}
+.info-manga h1{
+    font-size: 35px;
+    text-transform: capitalize;
+    display: inline;
+    text-wrap: balance;
+}
+.info-manga p{
+    color: #dea113;
+    font-size: 14px;
+    text-align: start;
+    text-wrap: pretty;
+    max-height: 300px;
+    overflow-y: scroll;
+    margin-right: 4px;
+    max-height: 300px;
+}
+.caps::-webkit-scrollbar{
+    width: 10px;
+  }
+  .sipnosis::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 119, 255, 0.13);
+    border-radius: 10px;
+    
+  }
+  
+  .sipnosis::-webkit-scrollbar{
+    width: 10px;
+  }
+  .info p::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 119, 255, 0.034);
+    border-radius: 10px;
+    
+  }
+  .viewer{
+    display: flex;
+    align-items: center;
+    color: rgb(92, 163, 255);
+    gap: 4px;
+    margin-top: 10px;
+  }
+  .viewer .material-symbols-outlined{
+    color: rgb(92, 163, 255);
+  }
+  
+.img-manga {
+    background-color: rgba(0, 255, 64, 0.932);
+    width: 100%;
+    min-height: 200px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0 3px 10px rgba(17, 84, 88, 0.384);
+    background-color: rgba(255, 255, 255, 0.164);
+}
+.img-manga img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+.seguir {
+    background-color: rgb(200, 140, 19);
+    height: 80%;
+    display: inline-block;
+    width: 100px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    
+}
+.span{
+     margin-top: 8px;
+     display: flex;
+     width: 100%;
+     flex-wrap: wrap;
+     align-items: flex-start;
+     justify-content: flex-start;
+     gap: 8px;
+     background-color: rgba(255, 0, 0, 0);
+     
+}
+.span span{
+    background-color: rgba(185, 239, 255, 0.233);
+    padding: 5px 15px;
+    border-radius: 8px;;
+    margin-top: 4px;
+    border: 1px solid #2f78ff00;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.384);
+   
+}
+.estado{
+    color:#39ff14;
+    text-shadow: 0 0 1px;
+    font-size: 22px;
+    padding-left: 8px;
+    position: relative;
+
+}
+.info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(247, 0, 0, 0);
+    padding: 10px 0;
+    text-transform: capitalize;
+    align-items: flex-start;
+    font-size: 14px;
+}
+.puntuacion{
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    gap: 4px;
+    color:orange;
+    font-size: 18px;
+}
+.auto::before{
+    content: "Autor: ";
+    color: #dea113;
+    font-size: 16px;
+}
+
+.fecha::before{
+    content: "Ultima actualizacion: ";
+    color: #dea113;
+    font-size: 16px;
+}
+
+.tipo::before{
+    content: "Titulos alternativos: ";
+    color: #dea113;
+    font-size: 16px;
+}
+
+.seguir .material-symbols-outlined{
+    color: #fff;
+}
+.buttons{
+    background-color: rgba(255, 0, 0, 0);
+    height:10%; 
+    justify-content: flex-end;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    padding: 1px 3px;
+}
+
+.caps {
+    background-color: rgba(255, 0, 0, 0);
+   height: 100%;
+   min-height: 600px;
+    width: 90%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   padding: 0 8px;
+   max-width: 1300px;
+   gap: 3px;
+   overflow-y: scroll;
+}
+a{
+  color: #fff;
+  text-decoration: none;
+}
+ul li a {
+  text-decoration: none;
+    background: linear-gradient(45deg ,rgba(0, 0, 0, 0) 0%,rgba(22, 7, 58, 0.945)90%);
+    height: 60px;
+    min-height: 60px;
+    width: 100%;
+    padding: 0 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.384);
+    border-radius: 4px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgb(92, 163, 255);
+    font-weight: 800;
+    padding: 0 20px;
+    transition: transform .1s ;
+}
+.material-symbols-outlined {
+    color: #91b8eb;
+}
+
+.titleCap {
+    flex: 2;
+    white-space: nowrap;
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contCap{
+  list-style: none;
+  width: 100%;
+}
+.contCap:hover{
+    color: #2a80e2;
+    transform: scale(0.98);
+}
+.sipnosis{
+    color: #39ff14;
+}
+
+
+/*comentariois styles*/
+.cont{
+    background-color: rgba(255, 0, 255, 0);
+    height: 800px;
+    width: 100%;
+    max-width: 1300px;
+    margin-top: 20vh;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cont h2,.reseñas h2{
+    
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0);
+    z-index: 5;
+   
+    } 
+    .cont h2::after{
+        content: "";
+        background-color: rgb(255, 123, 0);
+        height: 100%;
+        width: 8px;
+        position: absolute;
+        top: 0;
+        margin-left: 8px;
+        border-radius: 2px;
+}
+.cont .reseñas{
+    width: 30%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(0, 0, 255, 0);
+    overflow-y: auto;
+}
+.comentario {
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 5px;
+}
+.comentario-principal {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+#comentario{
+    background-color: rgba(255, 0, 0, 0);
+    width: 88%;
+}
+.info-user {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    padding: 2px 0px;
+    background-color: rgba(255, 0, 0, 0);
+    width: 90%;
+    padding: 0 5px;
+ 
+}
+.img-profile {
+    width: 12%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: blue;
+}
+.username {
+
+    font-size: 18px;
+}
+.username::before{
+    content: "@";
+}
+.fecha-del-comentario {
+    color: #ffffffaf;
+}
+.info-user .material-symbols-outlined {
+    color: #fff;
+    cursor: pointer;
+}
+.contenido_comentario {
+    background-color: rgba(0, 142, 224, 0);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    max-height: 400px;
+    width: 90%;
+    overflow: hidden;
+    flex-wrap: wrap; 
+}
+.p{  
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0);
+    
+}
+.pie {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    background-color: rgba(129, 117, 117, 0);
+    width: 90%;
+    height: 30px;
+}
+.repuesta {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 255, 0);
+    width: 85%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    right:-70px;
+    top: 0;
+}
+.repuesta .fecha-del-comentario{
+    font-size: 14px;
+}
+details{
+    background-color: rgba(255, 0, 0, 0);
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    justify-content: flex-end;
+    ;
+}
+summary{
+    color: rgb(0, 255, 170);
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+}
+.reseñas{
+    overflow-x: hidden;
+}
+.reseñas::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    color: rgb(4, 0, 255);
+    background-color: rgba(0, 0, 0, 0);
+}
+.reseñas::-webkit-scrollbar-thumb{
+    background-color: rgb(21, 47, 104);
+    border-radius: 30px;
+}
+
+body::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    color: red;
+    background-color: rgba(0, 0, 0, 0);
+}
+body::-webkit-scrollbar-thumb{
+    background-color: rgba(15, 37, 66, 0);
+    border-radius: 30px;
+}
+    </style>
+     <script src="/js/search.js" defer></script>
+  </head>
+  <body>
+  <header>
+    <h1><a href="/manga/index">Manga Fenix</a></h1>
+      <form autocomplete="off">
+          <div class="buscar">
+              <input type="text" placeholder="Buscar..." id="buscar">
+              <button>
+                  <span class="material-symbols-outlined">search</span>
+              </button>
+          </div>
+
+      </form>
+  </header>
+
+    <div class="section-1">
+      <div class="visual">
+        <div class="img-manga">
+          <img src="<%=response.img%>" alt="">
+        </div>
+      </div>
+      <article class="info-manga">
+        <div class="titulo">
+          <h1><%=response.title%></h1>
+          <span class="estado">en emision</span>
+          <div class="viewer">         
+             <span class="material-symbols-outlined">visibility
+            </span>
+            <span><%=response.views%></span></div>
+        </div>
+        <div class="info">
+          <span class="auto"><%=response.author%></span>
+          <span class="fecha"><%=response.followers%></span>
+          <span class="tipo"> 
+            <%=response.booktype%>
+          </span>
+        </div>
+
+        <p class="sipnosis">
+          <%=response.description%>
+        </p>
+
+        <div class="span categorias">
+          <%for(let i=0;i<response.genres.length;i++){%>
+          <span><%=response.genres[i]%></span>
+          <%}%>
+        </div>
+
+        <div class="puntuacion">
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined">Star_Half</span>
+          <span class="rate"><%=response.rate%></span>
+        </div>
+      </article>
+    </div>
+    <section class="cont">
+      <h2>capitulos</h2>
+      <ul class="caps">
+        <%for(let i=0;i<response.chaptersList.length;i++){%>
+          <li class="contCap">
+            <a href="/manga/reader/<%=response.chaptersList[i].chapterId%>">
+              <span class="material-symbols-outlined">
+                tag
+                </span>
+    
+       
+            <span class="titleCap"><%=response.chaptersList[i].chapterTitle%></span>
+         
+            <span class="material-symbols-outlined">visibility
+           </span>
+           <span><%=response.chaptersList[i].chapterViews%></span>
+           <span class="material-symbols-outlined">
+            calendar_month
+            </span>
+          <span class="dateCap"><%=response.chaptersList[i].chapterDate%></span>   
+       </div>
+            </a>
+
+      </li>
+          <%}%>
+
+      </ul>
+      <!-- <aside class="reseñas">
+       
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+         
+        <div class="comentario">
+          <div class="comentario-principal">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+
+            <p class="">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              reiciendis vel perferendis odio cum. Corporis quaerat a
+              perspiciatis impedit voluptas, voluptatibus, deserunt ab omnis,
+              aspernatur minima natus dolore distinctio saepe!
+            </p>
+            </div>
+
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+           
+          </div>
+
+            <details>
+              <summary>repuestas</summary>
+
+              
+          <div class="repuesta">
+            <div class="img-profile"></div>
+            <div id="comentario">
+               <div class="info-user">
+              <span class="username">eperpeento</span>
+              <span class="fecha-del-comentario">jue-26-sept</span>
+              <span class="material-symbols-outlined"> more_horiz </span>
+            </div>
+            <div class="contenido_comentario">
+               <p class="p">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                 est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                 sit quisquam magnam neque, ducimus sed!
+            </p>
+            </div>
+          
+            <div class="pie">
+              <span class="material-symbols-outlined"> thumb_up </span>
+              <span class="material-symbols-outlined"> thumb_down </span>
+              <a href="#">responder</a>
+            </div>
+            </div>
+            </div>
+            
+                <div class="repuesta">
+              <div class="img-profile"></div>
+              <div id="comentario">
+                 <div class="info-user">
+                <span class="username">eperpeento</span>
+                <span class="fecha-del-comentario">jue-26-sept</span>
+                <span class="material-symbols-outlined"> more_horiz </span>
+              </div>
+              <div class="contenido_comentario">
+                 <p class="p">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, distinctio autem ea
+                   est, fugit voluptas incidunt deserunt sint in facere aperiam? Consectetur nemo tempore 
+                   sit quisquam magnam neque, ducimus sed!
+              </p>
+              </div>
+            
+              <div class="pie">
+                <span class="material-symbols-outlined"> thumb_up </span>
+                <span class="material-symbols-outlined"> thumb_down </span>
+                <a href="#">responder</a>
+              </div>
+              </div>
+              </div>
+            </details>
+          
+          </div
+        </div>
+      </aside> -->
+    </section>
+    <!-- <script src="../js/read.js"></script> -->
+  </body>
+</html>

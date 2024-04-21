@@ -1,0 +1,625 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crete+Round:ital@0;1&family=Lexend+Deca:wght@100..900&display=swap');
+
+.font{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 13px;
+    background: linear-gradient(rgb(0, 13, 31),black);
+    flex-direction: column;
+}
+*{
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+h2{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+}
+header{
+    max-width: 1500px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(32, 2, 70);
+    color: #fff;
+    padding: 0 20px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.479);
+   
+}
+header::after{
+    content: '';
+    display: none;
+    height: 1px;
+    width: 500px;
+    background: linear-gradient(90deg,rgba(0, 0, 255, 0),rgba(0, 255, 136, 0));
+    position: absolute;
+    bottom: 0;
+    left: 100px;
+ box-shadow: 0 10px 10px violet;
+}
+
+header nav{
+    display: flex;
+    flex-grow: 2;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+header nav ul{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex: 2;
+    height: 100%;
+    padding: 0 15px;
+    background-color: rgba(255, 0, 0, 0);
+}
+header nav ul li{
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+   
+}
+header nav ul li:hover{
+    background: linear-gradient(0deg, rgba(94, 1, 156, 0.644) -30%,rgba(0, 0, 255, 0) 40%);
+    opacity: 0;
+    animation: liafter 0.3s ease-out forwards;
+}
+header nav ul li > a{
+    width: 100%;
+    text-align: center;
+}
+header nav ul li:hover > a{
+    color: rgb(159, 82, 247);
+    
+}
+header nav ul  li:hover > ::after{
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: rgba(130, 21, 255, 0.671);
+    position: absolute;
+    left: 0px;
+    opacity: 0;
+    bottom: -17px;
+    box-shadow: 0 0px 15px 2px rgb(94, 1, 156);
+    animation: liafter 0.4s ease-out forwards;
+}
+@keyframes liafter {
+    to{
+      opacity: 1;
+    }
+}
+
+header a ,.icon{
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    transition:  100ms;
+}
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    background-color: rgba(255, 0, 0, 0);
+    margin-left: 10px;
+}
+
+header nav form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:  0 5px;
+    height: 35px;
+    overflow: hidden;
+    background-color: rgb(19, 1, 51);
+    border-radius: 6px;
+    margin-right: 20px;
+}
+
+header nav form input{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.news-section {
+    min-height: 150px;
+    width: 90%;
+    margin-top: 40px;
+    background-color: rgba(70, 17, 17, 0);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    max-width: 1500px;
+   
+}
+.new-contain{
+    background-color: rgba(0, 0, 0, 0);
+    min-width: 220px;
+    min-height: 200px;
+}
+
+.new-Link{
+    background-color: rgba(0, 0, 255, 0);
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.img {
+    background-color: rgba(5, 65, 70, 0);
+    min-height: 200px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+
+    object-fit: cover;
+}
+.img img{
+    height: 100%;
+    object-fit: contain;
+    
+}
+.new-title {
+    margin-top: 2px;
+    background-color: rgba(255, 0, 0, 0);
+    text-wrap: pretty;
+    overflow: hidden;
+    padding: 0 0 0 5px;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: rgb(0, 255, 242);
+}
+
+.btn-cont {
+    height: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    height: 100%;
+}
+.btn {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn2:hover{
+    background: linear-gradient(90deg,transparent 30%,rgba(0, 0, 0, 0.452));
+}
+.btn1:hover{
+    background: linear-gradient(-90deg,transparent 30%,rgba(0, 0, 0, 0.445));
+}
+
+
+
+.cuerpo {
+    width: 95%;
+    background-color: rgba(238, 130, 238, 0);
+    min-height: 480px;
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1500px;
+}
+.cuerpo h2{
+    color: #f370ff;
+    font-size: 28px;
+    margin-left: 30px;
+    display: inline-flex;
+    margin-top: 30px;
+}
+.cuerpo h2::after,.section-title::after{
+    content: '';
+    width: 120%;
+    height: 5px;
+    background: rgb(154, 45, 255);
+    border-radius: 3px;
+    position: absolute;
+    top: 33px;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.topSection {
+    min-width: 280px;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    background-color: rgba(255, 0, 0, 0);
+    padding:  0 20px 0 0;
+}
+.topSection::after{
+    content: '';
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+        transparent,
+        #811b7998,
+        transparent
+    );
+    position: absolute;
+    right: 0;
+    top: 50%;
+    bottom: 50%;
+    transform: translateY(-50%);
+
+}
+
+.top-list {
+    background-color: rgba(0, 0, 0, 0.26);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    min-height: 200px;
+}
+.top-list .top-list-element{
+    height: 120px;
+    width: 100%;
+    margin-top: 25px;
+} 
+.top-list-element{
+    background: rgba(0, 0, 0, 0);
+    transition: .2s;
+    list-style: none;
+    border-radius: 10px;
+    padding: 10px  5px;
+}
+.top-list-element:hover{
+    background: linear-gradient(
+        90deg,
+        rgb(2, 0, 2) 40%,
+        transparent
+    );
+    color: #ff03f2;
+    box-shadow: 0 5px 10px black;
+    transform: translateY(-4px);
+}
+.top-list-element a{
+    height: 100%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+    overflow: hidden;
+
+}
+
+
+.top-list-img {
+    background: rgba(9, 247, 1, 0);
+    height: 90%;
+    min-width: 70px;
+    max-width: 70px;
+}
+.top-list-img img{
+    height: auto;
+    width:100%;
+    object-fit: cover;
+}
+
+.top-list-element-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    justify-content: flex-start;
+    color: #fff;
+    flex-wrap: wrap;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.top-list-element-info > div{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+}
+.title {
+    flex: 3;
+    background-color: rgba(255, 0, 0, 0);
+    min-width: 100%;
+    font-size: 18px;
+}
+.title::after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(
+        90deg,
+        violet,
+        transparent
+    );
+    bottom: -5px;
+    left: 0;
+}
+.views .material-symbols-outlined{
+    color: rgba(0, 207, 207, 0.986);
+}
+.symbol {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: #ff00d4a4;
+}
+
+.rate .material-icons{
+    color: rgb(255, 217, 0);
+}
+
+.list-number{
+    color: #ff03f2;
+    font-size: 22px;
+    margin-left: 8px;
+    text-align: center;
+    width: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.top-list-img::after{
+    content: '';
+    width: 2px;
+    height: 100%;
+    background: rgba(238, 130, 238, 0.644);
+    position: absolute;
+    left: -4px;
+
+}
+.manga-contain {
+    min-width: 450px;
+    flex: 2;
+    max-width: 1500px;
+    min-height: 480px;
+    display: flexbox ;
+    background-color: rgba(0, 255, 0, 0);
+}
+.nose {
+    min-width: 250px;
+    min-height: 480px;
+    display: flex;
+   
+    background-color: rgba(255, 0, 0, 0);
+}
+.nose::after{
+    content: '';
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+        transparent,
+        #ad178d98,
+        transparent
+    );
+    position: absolute;
+    left: 0;
+    top: 50%;
+    bottom: 50%;
+    transform: translateY(-50%);
+}
+
+/* manga section */
+
+
+.section-manga{
+    background-color: rgba(255, 0, 0, 0);
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 5px;
+    margin: 0 auto;
+    margin-top: 0px;
+  }
+  .manga-list{
+  background-color: rgba(0, 0, 255, 0);
+  width: 100%;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 30px;
+  align-content: center;
+  justify-items: center;
+  }
+  .manga-list-element {
+    height: 450px;
+    width: 220px;
+   background: linear-gradient(rgb(0, 34, 73) 50%,rgb(0, 0, 0),rgb(0, 0, 0));
+    list-style: none;
+    border-radius: 5px;
+    margin-top: 30px;
+  }
+  .manga-list-element a{
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding:  5px;
+  
+    
+  }
+  
+  .book-type{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(48, 100, 255);
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0 0 10px;
+    padding: 5px 10px;
+    z-index: 999;
+    color: #fff;
+  
+  }
+  .manga-list-element-img{
+    width: 100%;
+    height:65%;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .manga-list-element-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .manga-title{
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0);
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: rgb(219, 215, 209);
+    padding: 0 4px;
+  }
+  .manga-rate{
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 0.9em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 213, 0);
+    padding-left: 4px;
+  }
+  .manga-element-more-info{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.4em;
+    padding: 0 4px;
+    border-top: 1px solid #d4d4d466;
+    padding-top: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #aa56ff9c;
+  }
+  .manga-element-more-info .manga-views ,
+  .manga-element-more-info .manga-time{
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .manga-element-more-info .material-symbols-outlined{
+    font-size: 18px;
+  }
+
+  .efect{
+    height: 101%;
+    width: 102%;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .manga-list-element:hover{
+      box-shadow: 0 0 30px rebeccapurple;
+  }
+  .manga-list-element:hover > .efect::after{
+    content: '';
+    height: 120%;
+    width: 140px;
+    background: red;
+    position: absolute;
+    background: linear-gradient(rgb(200, 3, 255),rgb(18, 251, 255));
+    z-index: 4545;
+    animation: rotate-card 2s linear infinite;
+    transform-origin: center;
+    box-shadow: 0 0 10px 10px rgba(0, 200, 255, 0.38);
+  }
+  @keyframes rotate-card{
+    from{
+      transform: rotatez(-180deg);
+    }
+    to{
+      transform: rotatez(180deg);
+    }
+  }
+  .manga-list-element-img img{
+    transition: .3s;
+  }
+  .manga-list-element-img:hover > img{
+    transform: scale(1.1);
+  }
+  
+  .section-title{
+      color: #f370ff;
+      font-size: 28px;
+      margin-left: 30px;
+      margin-top: 30px;
+    
+  }
+  
+  

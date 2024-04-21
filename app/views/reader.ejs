@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+  }
+  body{
+    min-height: 100vh;
+    background: linear-gradient(15deg,rgb(14, 57, 58),rgb(29, 9, 61));
+    color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+   
+  }
+  a{
+    color: #fff;
+    text-decoration: none;
+  }
+
+header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 ;
+    gap: 20px;
+    font-family: sans-serif;
+    margin-top: 10px;
+  }
+  header form .buscar{
+    background-color: rgba(255, 255, 255, 0.164);
+    display: flex;
+    width: 400px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #fff;
+    align-items: center;
+    border: 1px solid #2f78ff00;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.384);
+  }
+
+  header form .buscar input{
+    flex: 2;
+    height: 35px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+  }
+  header form .buscar input::placeholder{
+    color: #56a5ff96;
+  }
+  header form .buscar button{
+    width: 40px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+     cursor: pointer;
+  }
+  h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 33px;
+  }
+  .manga-img{
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1300px;
+    padding: 5px;
+    margin-bottom: 80px;
+  }
+  .manga-img ul li img{
+    width: 100%;
+    object-fit: cover;
+    
+  }
+  .manga-img ul {
+    width: 100%;
+    
+  }
+  .manga-img ul li{
+    min-width: 100%;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0);
+    min-height: 400px;
+  }
+    </style>
+     <script src="/js/search.js" defer></script>
+</head>
+<body>
+    <header>
+      <h1><a href="/manga/index">Manga Fenix</a></h1>
+        <form>
+            <div class="buscar">
+                <input type="text" placeholder="Buscar..." id="buscar">
+                <button>
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+            </form>
+        </header>
+    <h2><%=response.captitle%></h2>
+    <div>
+      <a href="/manga/reader/<%=response.prevChapter%>">anterior</a>
+      <a href="/manga/reader/<%=response.nextChapter%>">siguiente</a>
+    </div>
+    <div class="manga-img">
+    
+      <ul>
+        <%for(let i=0;i<response.pages.length;i++){%>
+            <li>
+                <img src="<%=response.pages[i]%>" alt="" loading="lazy">  
+          </li>
+            <%}%>
+
+      </ul>
+    </div>
+</body>
+</html>

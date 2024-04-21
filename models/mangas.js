@@ -140,7 +140,8 @@ async function get_category(categoryUrl){
         const $ = cheerio.load(response.data);
         const pages = $('.site-content .mangaread-page .mangaread-pagenav .sl-page > option').length/2
         const title = $('.mangaread-title').children().first().attr('title')+'/'+$('.mangaread-title').children().last().attr('title');
-        const prevChapter = $('.mangaread-top').find('.mangaread-prev-btn a').attr('href')
+        const prevChapter = {...$('.mangaread-top').find('.mangaread-prev-btn a').attr('href').match(/chapter\/(.+)$/
+        )}[1]
         let nextChapter = ''
         const imgList = []
 
@@ -152,7 +153,8 @@ async function get_category(categoryUrl){
             const URL = mainUrl()+'chapter/'+url+`-10-${i+1}.html`
             const response = await AxiosGet(URL);
             const $ = cheerio.load(response.data)
-            nextChapter =  $('.mangaread-top').find('.mangaread-next-btn a').attr('href')
+            nextChapter =  {...$('.mangaread-top').find('.mangaread-next-btn a').attr('href').match(/chapter\/(.+)$/
+            )}[1]
             $('.mangaread-img > .pic_box').each((index,Element)=>{
                 const img = $(Element).find('img').attr('src')
                imgList.push(img)
@@ -162,7 +164,7 @@ async function get_category(categoryUrl){
    
         return {
             captitle:title,
-            prevChapter:prevChapter,
+             prevChapter:prevChapter,
             nextChapter:nextChapter,
             pages: imgList
         }

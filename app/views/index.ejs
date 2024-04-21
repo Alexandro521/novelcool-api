@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/search.js" defer></script>
+</head>
+
+<body>
+    <aside class="aside">
+        <ul>
+            <li><a href="#">completos</a></li>
+            <li><a href="#">categorias</a></li>
+            <li><a href="#">Populares</a></li>
+            <li><a href="#">Recientes</a></li>
+        </ul>
+    </aside>
+    <div class="divP">
+            <header>
+        <h1><a href="/manga/index">Manga Fenix</a></h1>
+        <form>
+            <div class="buscar">
+                <input id="buscar" type="text" placeholder="Buscar...">
+                <button>
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+
+        </form>
+    </header>
+    <main>
+        <%const obj = response%>
+        <% console.log(obj)%>
+        <%for(let i=0;i<obj.length;i++){%>
+        <section class="Mangas">
+            <h3><%=obj[i].nameSection%></h3>
+            <ul>
+                <%const elemento = obj[i].mangaList%>
+                <%for(let x=0;x<elemento.length;x++){%>
+                <li>
+                    <a href="/manga/view/<%=elemento[x].id%>">
+                       <div class="manga-card">
+                        <div class="lastedChapter">
+                            <%=elemento[x].typeManga%>
+                        </div>
+                        <div class="manga-img-cont">
+                            <img src=" <%=elemento[x].img%>" alt=" <%=elemento[x].title%>" loading="lazy">
+
+                        </div>
+                        <h3 class="crete-round-regular"> <%=elemento[x].title%></h3>
+                        <div class="info">
+                            <h3> <%=elemento[x].title%></h3>
+                            <div class="view">
+                                 <span class="material-symbols-outlined">
+                                    visibility
+                                </span>
+                                <span> <%=elemento[x].views%></span>
+                            </div>
+                            <div class="view">
+                                <span class="material-symbols-outlined">
+                                   visibility
+                               </span>
+                               <span> <%=elemento[x].dataTime%></span>
+                           </div>
+                           <div class="view">
+                            <span class="material-symbols-outlined">
+                               visibility
+                           </span>
+                           <span> <%=elemento[x].bookRate%></span>
+                       </div>
+                            <p>
+                                <%=elemento[x].description%>
+                            </p>
+                        </div>
+                    </div>    
+                    </a>
+                 
+                </li>
+                <%}%>
+            </ul>
+
+        </section>
+        <%}%>
+    </main>
+    <div class="paginacion">
+        <a href="#">
+            << /a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#" class="current-page">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#"> ></a>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="#">Mas info</a></li>
+        </ul>
+    </footer>
+    </div>
+    <div class="aside">
+
+    </div>
+</body>
+
+</html>

@@ -56,12 +56,12 @@ export class MangaController{
             completed,
             rate
         )
-        res.json(result)
+        res.render('search',{response:result})
 
     }
     static async Index(req,res){
         const result = await Mangas.get_mangasIndex()
-        res.status(200).json(result)
+        res.render('nuevoIndex',{response:result})
     }
     static async Lasted(req,res){
         const result = await Mangas.get_lasted()
@@ -111,7 +111,7 @@ export class MangaController{
     static async info(req,res){
         const id = req.params.id
         const result = await Mangas.get_info(id)
-        res.json(result)
+        res.render('read',{response:result})
     }
     static async genres(req,res){
         const result = await Mangas.get_GenresList()
@@ -123,7 +123,7 @@ export class MangaController{
         const ch = req.params.ch
         const url = ch + '/' + id
         const result = await Mangas.chapter_read(url)
-        res.json(result)
+        res.render('reader',{response:result})
     }
     
     
