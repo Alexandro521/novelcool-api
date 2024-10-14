@@ -5,7 +5,7 @@ const app = express()
 const PORT = process.env.PORT ?? 1234;
 
 app.use(cors())
-app.use('/api',mangasRouter)
+app.use('/api/v1',mangasRouter)
 
  app.get('*',(req,res)=>{
     res.json({
