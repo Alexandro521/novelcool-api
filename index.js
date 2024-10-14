@@ -8,7 +8,7 @@ app.use(cors())
 app.use('/api/v1',mangasRouter)
 
  app.get('*',(req,res)=>{
-    res.status(404).json({
+    res.json({
         message: 'route not exist',
         initRouter:'/api/v1',
         routes: {
