@@ -73,6 +73,18 @@ Devuelve los mangas de una categoría específica. Reemplaza :category con el no
 GET /api/v1/search
 Busca mangas por título. Debes incluir los parámetros de búsqueda en la URL.
 
+| Parámetro             | Descripción                                                    | Tipo      | Ejemplo                                             |
+|-----------------------|----------------------------------------------------------------|-----------|-----------------------------------------------------|
+| `query`               | Palabra clave para buscar en el título o descripción del manga.| `string`  | `naruto`                                            |
+| `author`              | Nombre del autor del manga.                                    | `string`  | `Kishimoto`                                         |
+| `s_sel`               | Selecciona el estado del manga, si está completo o en progreso.| `string`  | `completed`                                         |
+| `a_sel`               | Selecciona el estado de actividad del autor.                   | `string`  | `active`                                            |
+| `genres_includes`     | Lista de géneros que deben estar incluidos en el manga.        | `string`  | `action,drama`                                      |
+| `genres_not_includes` | Lista de géneros que deben ser excluidos del manga.            | `string`  | `horror`                                            |
+| `year`                | Año de publicación o lanzamiento del manga.                    | `number`  | `2020`                                              |
+| `completed`           | Filtra por mangas completados (`true` o `false`).              | `boolean` | `true`                                              |
+| `rate`                | Filtra por la calificación del manga (un valor numérico).      | `number`  | `4.5`                                               |
+
 
 6. Información de un manga por ID:
 GET /api/v1/view/:mangaId
