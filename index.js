@@ -8,19 +8,18 @@ app.use(cors())
 app.use('/api/v1',mangasRouter)
 
  app.get('*',(req,res)=>{
-    res.json({
-        message: 'path not exist',
-        initPath:'/api',
+    res.status(404).json({
+        message: 'route not exist',
+        initPath:'/api/v1',
         path: {
            indexPage: '/index',
            lastRelease:'/lasted',
-           completeBooks: '/complete',
-           categories:['/romance', '/comedy','/drama','/action','/webcomic'],
+           categories:['/complete','/romance', '/comedy','/drama','/action','/webcomic'],
            anyCategory: '/category/:category',
            search: '/search',
-           getInfoById:'/view/:id',
+           getMangaInfoById:'/view/:mangaId',
            getGenresList:'/info/genres',
-           getMangaChapterPages:'/reader/:ch/:id',
+           getMangaChapterPages:'/reader/:mangaId/:chapterId',
 
         }
     })
