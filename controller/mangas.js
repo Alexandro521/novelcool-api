@@ -1,147 +1,131 @@
-Aquí tienes el archivo README.md actualizado con los parámetros de búsqueda de la ruta /search en formato de tabla:
-
-# Novecool API
-
-Novecool es una API de mangas desarrollada en Node.js para obtener información sobre mangas, incluyendo lanzamientos recientes, categorías, búsqueda y más.
-
-## Características
-
-- Obtener los mangas más recientes
-- Buscar mangas por título o categoría
-- Obtener información detallada de un manga
-- Leer capítulos de un manga
-- Navegar por diferentes géneros y categorías
-
-## Instalación
-
-1. Clona este repositorio:
-
-   ```bash
-   git clone https://github.com/tu-usuario/novecool.git
-
-2. Instala las dependencias:
-
-npm install
-
-
-3. Inicia el servidor:
-
-npm start
-
-
-
-Rutas de la API
-
-Rutas principales
-
-Ruta base de la API: /api/v1
-
-
-Rutas disponibles
-
-1. Página principal:
-GET /api/v1/index
-Muestra un mensaje o una página de inicio.
-
-
-2. Últimos lanzamientos:
-GET /api/v1/lasted
-Obtiene la lista de mangas lanzados recientemente.
-
-
-3. Categorías:
-Las siguientes rutas devuelven mangas en la categoría correspondiente:
-
-GET /api/v1/complete - Mangas completos
-
-GET /api/v1/romance - Categoría romance
-
-GET /api/v1/comedy - Categoría comedia
-
-GET /api/v1/drama - Categoría drama
-
-GET /api/v1/action - Categoría acción
-
-GET /api/v1/webcomic - Webcómics
-
-
-
-4. Cualquier categoría:
-GET /api/v1/category/:category
-Devuelve los mangas de una categoría específica. Reemplaza :category con el nombre de la categoría (ejemplo: action, romance, etc.).
-
-
-5. Búsqueda:
-
-GET /api/v1/search
-
-Permite buscar mangas con varios parámetros. Los parámetros que puedes utilizar en la búsqueda son los siguientes:
-
-| Parámetro             | Descripción                                                   | Tipo      | Ejemplo                                              |
-|-----------------------|---------------------------------------------------------------|-----------|------------------------------------------------------|
-| `query`               | Palabra clave para buscar en el título o descripción del manga.| `string`  | `naruto`                                             |
-| `author`              | Nombre del autor del manga.                                    | `string`  | `Kishimoto`                                          |
-| `s_sel`               | Selecciona el estado del manga, si está completo o en progreso.| `string`  | `completed`                                          |
-| `a_sel`               | Selecciona el estado de actividad del autor.                   | `string`  | `active`                                             |
-| `genres_includes`     | Lista de géneros que deben estar incluidos en el manga.        | `string`  | `action,drama`                                       |
-| `genres_not_includes` | Lista de géneros que deben ser excluidos del manga.            | `string`  | `horror`                                             |
-| `year`                | Año de publicación o lanzamiento del manga.                   | `number`  | `2020`                                               |
-| `completed`           | Filtra por mangas completados (`true` o `false`).              | `boolean` | `true`                                               |
-| `rate`                | Filtra por la calificación del manga (un valor numérico).      | `number`  | `4.5`                                                |
-
-Ejemplo de uso:
-
-/api/v1/search?query=naruto&author=Kishimoto&genres_includes=action,drama&completed=true
-
-
-6. Información de un manga por ID:
-GET /api/v1/view/:mangaId
-Devuelve la información completa del manga identificado por :mangaId.
-
-
-7. Lista de géneros:
-GET /api/v1/info/genres
-Obtiene la lista completa de géneros disponibles.
-
-
-8. Capítulos de un manga:
-GET /api/v1/reader/:mangaId/:chapterId
-Obtiene las páginas de un capítulo específico de un manga, donde :mangaId es el ID del manga y :chapterId es el ID del capítulo.
-
-
-
-Ruta no encontrada
-
-Si se intenta acceder a una ruta que no existe, la API devolverá el siguiente mensaje:
-
-{
-    "message": "route not exist"
-}
-
-
-Contribuciones
-
-¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estos pasos:
-
-1. Haz un fork del repositorio.
-
-
-2. Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-
-
-3. Realiza los cambios necesarios y commitea (git commit -am 'Añadir nueva funcionalidad').
-
-
-4. Haz push a la rama (git push origin feature/nueva-funcionalidad).
-
-
-5. Crea un pull request.
-
-
-
-Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
-Ahora los parámetros de la ruta `/search` están organizados en una tabla para mayor claridad y legibilidad.
-
+import {Mangas} from '../models/mangas.js'
+
+
+export class MangaController{
+
+    static async search(req,res){
+        let {
+         query,
+         author,
+         s_sel,
+         a_sel,
+         genres_includes,
+         genres_not_includes,
+         year,
+         completed ,
+         rate,
+        } = req.query
+
+        if(genres_includes){
+         genres_includes= genres_includes.split('%G')
+        }
+        if(genres_not_includes){
+            genres_not_includes= genres_not_includes.split('%G')
+        }
+        if(isNaN(year)){
+            year = 0
+        }
+        if(Number.parseInt(year) > 2024 || Number.parseInt(year) < 1943){
+            year = ''
+        }
+        if(isNaN(rate)){
+            rate = 0
+        }
+        if(Number.parseInt(rate) > 5 || Number.parseInt(rate) < 1){
+            rate = ''
+        }
+        // res.json({
+        //     search: query,
+        //     author: author,
+        //     s_sel:s_sel,
+        //     a_sel:a_sel,
+        //     genres_includes:genres_includes,
+        //     genres_not_includes:genres_not_includes,
+        //     year:year,
+        //     completed:completed,
+        //     rate:rate
+        // })
+        const  result = await Mangas.search(
+            query,
+            author,
+            s_sel,
+            a_sel,
+            genres_includes,
+            genres_not_includes,
+            year,
+            completed,
+            rate
+        )
+        res.json(result)
+
+    }
+    static async Index(req,res){
+        const result = await Mangas.get_mangasIndex()
+        res.status(200).json(result)
+    }
+    static async Lasted(req,res){
+        const result = await Mangas.get_lasted()
+        res.status(200).json(result)
+    }
+    static async Popular(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_popular(page)
+        res.status(200).json(result)
+    }
+    static async Complete(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_completed(page)
+        res.status(200).json(result)
+    }
+    static async Romance(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_category('Romance',page)
+        res.status(200).json(result)
+    }
+    static async Comedy(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_category('Comedia',page)
+        res.status(200).json(result)
+    }
+    static async Drama(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_category('Drama',page)
+        res.status(200).json(result)
+    }
+    static async Action(req,res){
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_category('Acción',page)
+        res.status(200).json(result)
+    }
+    static async Webcomic(req,res){
+        const page = req.query.page ?? 1
+        const result = await get_category('Webcomic',page)
+        res.status(200).json(result)
+    }
+    static async Category(req,res){
+        const category = req.params.category 
+        const page = req.query.page ?? 1
+        const result = await Mangas.get_category(category,page)
+        res.status(200).json(result)
+    }
+    static async info(req,res){
+        const id = req.params.id
+        const result = await Mangas.get_info(id)
+        res.json(result)
+    }
+    static async genres(req,res){
+        const result = await Mangas.get_GenresList()
+        res.json(result)
+    }
+    static async reader(req,res){
+
+        const id = req.params.id
+        const ch = req.params.ch
+        const url = ch + '/' + id
+        const result = await Mangas.chapter_read(url)
+        res.json(result)
+    }
+    
+    
+
+           }
