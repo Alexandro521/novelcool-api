@@ -14,7 +14,7 @@
 
 1. Clona este repositorio:
 ```bash
-   git clone https://github.com/tu-usuario/novecool.git
+   git clone https://github.com/Alexandro521/novelcool-api.git
 ```
 2. Instala las dependencias:
 
@@ -110,30 +110,4 @@ Si se intenta acceder a una ruta que no existe, la API devolverá el siguiente m
     "message": "route not exist"
 }
 
-
-Contribuciones
-
-¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estos pasos:
-
-1. Haz un fork del repositorio.
-
-
-2. Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-
-
-3. Realiza los cambios necesarios y commitea (git commit -am 'Añadir nueva funcionalidad').
-
-
-4. Haz push a la rama (git push origin feature/nueva-funcionalidad).
-
-
-5. Crea un pull request.
-
-
-
-Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
-
-Este `README.md` incluye las rutas principales de tu API, cómo instalarla y ejecutarla, y también cómo contribuir al proyecto. ¡Perfecto para compartir en GitHub!
 
