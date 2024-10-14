@@ -13,10 +13,11 @@
 ## Instalación
 
 1. Clona este repositorio:
-   ```bash
+```bash
    git clone https://github.com/tu-usuario/novecool.git
 ```
 2. Instala las dependencias:
+
 ```bash
 npm install
 ```
