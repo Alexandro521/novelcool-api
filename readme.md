@@ -15,16 +15,16 @@
 1. Clona este repositorio:
    ```bash
    git clone https://github.com/tu-usuario/novecool.git
-
+```
 2. Instala las dependencias:
-
+```bash
 npm install
-
+```
 
 3. Inicia el servidor:
-
+```bash
 npm start
-
+```
 
 
 Rutas de la API
