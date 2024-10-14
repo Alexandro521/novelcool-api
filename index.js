@@ -10,8 +10,8 @@ app.use('/api/v1',mangasRouter)
  app.get('*',(req,res)=>{
     res.status(404).json({
         message: 'route not exist',
-        initPath:'/api/v1',
-        path: {
+        initRouter:'/api/v1',
+        routes: {
            indexPage: '/index',
            lastRelease:'/lasted',
            categories:['/complete','/romance', '/comedy','/drama','/action','/webcomic'],

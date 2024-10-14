@@ -1,8 +1,6 @@
-Aquí tienes el archivo README.md actualizado con los parámetros de búsqueda de la ruta /search en formato de tabla:
 
 # Novecool API
 
-Novecool es una API de mangas desarrollada en Node.js para obtener información sobre mangas, incluyendo lanzamientos recientes, categorías, búsqueda y más.
 
 ## Características
 
@@ -15,7 +13,6 @@ Novecool es una API de mangas desarrollada en Node.js para obtener información 
 ## Instalación
 
 1. Clona este repositorio:
-
    ```bash
    git clone https://github.com/tu-usuario/novecool.git
 
@@ -72,26 +69,8 @@ Devuelve los mangas de una categoría específica. Reemplaza :category con el no
 
 
 5. Búsqueda:
-
 GET /api/v1/search
-
-Permite buscar mangas con varios parámetros. Los parámetros que puedes utilizar en la búsqueda son los siguientes:
-
-| Parámetro             | Descripción                                                   | Tipo      | Ejemplo                                              |
-|-----------------------|---------------------------------------------------------------|-----------|------------------------------------------------------|
-| `query`               | Palabra clave para buscar en el título o descripción del manga.| `string`  | `naruto`                                             |
-| `author`              | Nombre del autor del manga.                                    | `string`  | `Kishimoto`                                          |
-| `s_sel`               | Selecciona el estado del manga, si está completo o en progreso.| `string`  | `completed`                                          |
-| `a_sel`               | Selecciona el estado de actividad del autor.                   | `string`  | `active`                                             |
-| `genres_includes`     | Lista de géneros que deben estar incluidos en el manga.        | `string`  | `action,drama`                                       |
-| `genres_not_includes` | Lista de géneros que deben ser excluidos del manga.            | `string`  | `horror`                                             |
-| `year`                | Año de publicación o lanzamiento del manga.                   | `number`  | `2020`                                               |
-| `completed`           | Filtra por mangas completados (`true` o `false`).              | `boolean` | `true`                                               |
-| `rate`                | Filtra por la calificación del manga (un valor numérico).      | `number`  | `4.5`                                                |
-
-Ejemplo de uso:
-
-/api/v1/search?query=naruto&author=Kishimoto&genres_includes=action,drama&completed=true
+Busca mangas por título. Debes incluir los parámetros de búsqueda en la URL.
 
 
 6. Información de un manga por ID:
@@ -143,5 +122,5 @@ Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
-Ahora los parámetros de la ruta `/search` están organizados en una tabla para mayor claridad y legibilidad.
+Este `README.md` incluye las rutas principales de tu API, cómo instalarla y ejecutarla, y también cómo contribuir al proyecto. ¡Perfecto para compartir en GitHub!
 
