@@ -214,8 +214,7 @@ async function get_category(categoryUrl){
   
   return {
     head:{
-      filter: SearchParams,
-      categoryGroup: categories,
+      ...SearchParams
 
     },
     body:{
